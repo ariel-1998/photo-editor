@@ -8,6 +8,10 @@ body {
   margin: 0;
 }
 
+button {
+  font-size: 1rem;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -22,7 +26,7 @@ body {
 
 .main-img {
   grid-area: image;
-  background-image: url("./assets/wallpaer.jpg");
+  margin-top: 10px;
   width: 100%;
   height: 100%;
   background-position: top center;
@@ -68,17 +72,84 @@ body {
   background-color: hsl(265, 100%, 56%, 0.3);
 }
 
-.sidebar-item:last-child:after {
+.sidebar-item.download-btn {
+  background-color: #27ae60;
+  color: #ffffff;
+}
+
+.sidebar-item.download-btn:hover,
+.sidebar-item.download-btn:focus {
+  background-color: #219d54;
+}
+
+.sidebar-item.download-btn::after {
   display: none;
 }
 
 .slider-container {
   grid-area: slider;
-  margin: 2rem;
-  padding: 2rem;
+  margin: 1rem;
+  padding: 1rem;
 }
 
 .slider {
   width: 100%;
   cursor: pointer;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-btn {
+  margin-top: 1rem;
+  cursor: pointer;
+  background-color: #3498db;
+  color: #ffffff;
+  transition: background-color 200ms ease;
+}
+
+.file-btn:hover,
+.file-btn:focus {
+  background-color: #2980b9;
+}
+
+.sidebar-item.file-btn::after {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "sidebar"
+      "image"
+      "slider";
+    height: 100vh;
+    width: 100vw;
+    background-color: #dadada;
+  }
+
+  .main-img {
+    margin: 0;
+  }
+
+  .sidebar {
+    width: 100%;
+    overflow: scroll;
+    flex-direction: row;
+  }
+
+  .sidebar-item:nth-last-child(2) {
+    order: -2;
+  }
+
+  .file-btn {
+    margin-top: 0;
+  }
+  .slider-container {
+    margin: 0;
+    padding: 10px;
+  }
 }
